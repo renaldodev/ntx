@@ -7,7 +7,7 @@ export const BlocoSchema = z.object({
   dataAtualizacao: z.date(),
   blocoId: z.number(),
   descricao: z.string(),
-  numero: z.string(),
+  numero: z.string(), 
   latitude: z.number(),
   longetude: z.number(),
   operadorId: z.number(),

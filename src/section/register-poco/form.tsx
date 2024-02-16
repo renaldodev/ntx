@@ -3,27 +3,32 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, Col, Row, Spinner, Form as RNForm } from "react-bootstrap";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TextField } from "../../components/hook-form";
+import { ProvinciaSelect } from "./provincia.component";
+import { TipoPocoSelect } from "./tipoPoco.component";
+import { TipoPlataformaSelect } from "./plataformaSelect.component";
 
 const schema = z.object({
   descricao: z.string(),
   bacia: z.string(),
   bloco: z.string(),
   licencaExploracao: z.string(),
-  latitude: z.number(),
-  longetitude: z.number(),
+  latitude: z.coerce.number(),
+  longetitude: z.coerce.number(),
   lamineDeAgua: z.string(),
-  dataInicioPerfuracao: z.date(),
-  dataConclusaoPerfuracao: z.date(),
-  profundidade: z.number(),
-  profundidadeTotal: z.number(),
+  dataInicioPerfuracao:z.coerce.date(),
+  dataConclusaoPerfuracao:z.coerce.date(),
+  profundidade: z.coerce.number(),
+  profundidadeTotal: z.coerce.number(),
   nomeDaRig: z.string(),
   classe: z.string(),
   ambiente: z.string(),
-  dataDt: z.date(),
-  dataDeReentrada: z.date(),
-  dataDeConclusao: z.date(),
-  pocoTipoId: z.number(),
-  plataformaId: z.number(),
+  dataDt:z.coerce.date(),
+  dataDeReentrada:z.coerce.date(),
+  dataDeConclusao:z.coerce.date(),
+  pocoTipoId: z.coerce.number(),
+  plataformaId: z.coerce.number(),
+  provinciaId: z.coerce.number(),
+  imagem: z.string(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -110,6 +115,7 @@ export function Form({ submit, edit, isLoading }: Props) {
             name="dataInicioPerfuracao"
             label="dataInicioPerfuracao"
             control={control}
+            type="date"
             error={errors?.dataInicioPerfuracao?.message || ""}
           />
         </Col>
@@ -118,6 +124,7 @@ export function Form({ submit, edit, isLoading }: Props) {
             name="dataConclusaoPerfuracao"
             label="dataConclusaoPerfuracao"
             control={control}
+            type="date"
             error={errors?.dataConclusaoPerfuracao?.message || ""}
           />
         </Col>
@@ -163,9 +170,18 @@ export function Form({ submit, edit, isLoading }: Props) {
         </Col>
         <Col md={6} className="mb-3">
           <TextField
+            name="imagem"
+            label="Imagem"
+            control={control}
+            error={errors?.imagem?.message || ""}
+          />
+        </Col>
+        <Col md={6} className="mb-3">
+          <TextField
             name="dataDt"
             label="dataDt"
             control={control}
+            type="date"
             error={errors?.dataDt?.message || ""}
           />
         </Col>
@@ -173,6 +189,7 @@ export function Form({ submit, edit, isLoading }: Props) {
           <TextField
             name="dataDeReentrada"
             label="dataDeReentrada"
+            type="date"
             control={control}
             error={errors?.dataDeReentrada?.message || ""}
           />
@@ -181,28 +198,35 @@ export function Form({ submit, edit, isLoading }: Props) {
           <TextField
             name="dataDeConclusao"
             label="dataDeConclusao"
+            type="date"
             control={control}
             error={errors?.dataDeConclusao?.message || ""}
           />
         </Col>
-
         <Col md={6} className="mb-3">
-          <RNForm.Select aria-label="Default select example">
-            <option>Tipo de poco</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </RNForm.Select>
+          <TipoPocoSelect
+            control={control}
+            error={errors.pocoTipoId?.message || ""}
+            label="Tipo de poço"
+            name="pocoTipoId"
+          />
         </Col>
         <Col md={6} className="mb-3">
-          <RNForm.Select aria-label="Default select example">
-            <option>Tipo de plataforma</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </RNForm.Select>
+          <TipoPlataformaSelect
+            label="Plataforma"
+            control={control}
+            error={errors.plataformaId?.message || ""}
+            name="plataformaId"
+          />
         </Col>
-
+        <Col md={6} className="mb-3">
+          <ProvinciaSelect
+            control={control}
+            error={errors.provinciaId?.message || ""}
+            label="Província"
+            name="provinciaId"
+          />
+        </Col>
         <Col md={12}>
           <Button
             type="submit"

@@ -164,7 +164,7 @@ const Login: FC<LoginProps> = ({ ThemeChanger }: any) => {
                   <Col xl={12} className="d-grid mt-2">
                     <Button
                       variant="primary"
-                      onClick={Login1}
+                      onClick={()=>navigate("/home/")}
                       size="lg"
                       className="btn"
                     >

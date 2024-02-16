@@ -33,7 +33,6 @@ export function Form({ submit, edit, isLoading }: Props) {
 	} = useForm<FormValues>({
 		resolver: zodResolver(schema),
 	});
-
 	const onSubmit: SubmitHandler<FormValues> = (data) => submit(data);
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
@@ -41,7 +40,7 @@ export function Form({ submit, edit, isLoading }: Props) {
 				<Col md={6} className="mb-3">
 					<TextField
 						name="descricao"
-						label="descricao"
+						label="Descrição"
 						control={control}
 						error={errors?.descricao?.message || ""}
 					/>
@@ -49,7 +48,7 @@ export function Form({ submit, edit, isLoading }: Props) {
 				<Col md={6} className="mb-3">
 					<TextField
 						name="latitude"
-						label="latitude"
+						label="Latitude"
 						control={control}
 						error={errors?.latitude?.message || ""}
 					/>

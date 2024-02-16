@@ -1,6 +1,7 @@
 import { z } from "zod";
  import { PlataformaSchema } from "./schema";
 import { contract } from "../contract";
+import { PlataformaSchema } from "./schema";
 
 export const plataformaContract = contract.router({
   create: {

@@ -2,6 +2,28 @@ import { Icon } from "@iconify/react";
 
 export const MENUITEMS = [
   {
+    Items: [
+      {
+        icon: (
+          <Icon
+            icon="humbleicons:home"
+            fontSize={20}
+            className="side-menu__icon"
+          />
+        ),
+        type: "link",
+        Name: "",
+        active: false,
+        selected: false,
+        title: "Início",
+        path: "/home",
+        badge: "",
+        badgetxt: "",
+        class: "badge bg-warning-transparent ms-2",
+      },
+    ],
+  },
+  {
     // menutitle: "MAIN",
     Items: [
       {
@@ -169,7 +191,7 @@ export const MENUITEMS = [
       {
         icon: (
           <Icon
-            icon="healthicons:machinery"
+            icon="game-icons:oil-rig"
             fontSize={20}
             className="side-menu__icon"
           />
@@ -250,7 +272,7 @@ export const MENUITEMS = [
       {
         icon: (
           <Icon
-            icon="game-icons:dig-dug"
+            icon="openmoji:oil-spill"
             fontSize={20}
             className="side-menu__icon"
           />
