@@ -1,6 +1,7 @@
 import { z } from "zod";
 // import { OperatorSchema } from "./schema";
 import { contract } from "../contract";
+import { PlataformaSchema } from "./schema";
 
 export const plataformaContract = contract.router({
   create: {
@@ -31,7 +32,7 @@ export const plataformaContract = contract.router({
     method: "GET",
     path: "/Plataforma/getAll",
     responses: {
-      200: z.array(z.any()),
+      200: z.array(PlataformaSchema),
     },
   },
   getById: {
