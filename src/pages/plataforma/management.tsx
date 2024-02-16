@@ -1,66 +1,101 @@
 import { Fragment } from "react";
-import { Card, Col, Row, Table } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import Pageheader from "../../components/pageheader/pageheader";
-import { Link } from "react-router-dom";
-import { service } from "../../service";
+import { queryClient, service } from "../../service";
 import { useTranslation } from "../../hooks";
+import { Link } from "react-router-dom";
+import { enqueueSnackbar } from "notistack";
+import { ResponsiveDataTable } from "../../components/common/responsive-table";
+const img =
+	"https://hips.hearstapps.com/hmg-prod/images/robert-pattinson-as-bruce-wayne-batman-in-the-batman-1645187114.jpg";
 
-export function PlataformManagement() {
-  const img =
-    "https://hips.hearstapps.com/hmg-prod/images/robert-pattinson-as-bruce-wayne-batman-in-the-batman-1645187114.jpg";
-  const { data } = service.plataforma.list.useQuery(["operator", "list"]);
-  const plataformas = data?.body || [];
-  const { translate } = useTranslation();
-  return (
-    <Fragment>
-      <Pageheader title="Gerenciamento" heading="Operador" active="lista" />
-      <Row>
-        <Col xl={12}>
-          <Card className="custom-card">
-            <Table className="table text-nowrap table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">Email</th>
-                  <th scope="col">NIF</th>
-                  <th scope="col">Descricao</th>
-                  <th scope="col">Telefone</th>
-                  <th scope="col">Atualizado Por</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {plataformas.map((plataforma) => (
-                  <tr key={plataforma.usuarioRegistroId}>
-                    <th scope="row">
-                      <div className="d-flex align-items-center">
-                        <span className="avatar avatar-xs me-2 online avatar-rounded">
-                          <img src={img} alt="img" />
-                        </span>
-                        {plataforma.email}
-                      </div>
-                    </th>
+export function PlataformaManagement() {
+	const { data } = service.plataforma.list.useQuery(["plataforma", "list"]);
+	const { mutate } = service.plataforma.delete.useMutation({
+		onSuccess() {
+			queryClient.invalidateQueries({ queryKey: ["plataforma", "list"] });
+			enqueueSnackbar("Plataforma  Apagada com sucesso");
+		},
+		onError() {
+			enqueueSnackbar("Algo deu errado", { variant: "error" });
+		},
+	});
+	const plataforma = data?.body || [];
 
-                    <td> {plataforma.nif}</td>
-                    <td> {plataforma.descricao}</td>
-                    <td> {plataforma.telefone1}</td>
-                    <td> {plataforma.atualizadoPor}</td>
-                    <td>
-                      <div className="hstack gap-2 flex-wrap">
-                        <Link to="#" className="text-info fs-14 lh-1">
-                          <i className="ri-edit-line"></i>
-                        </Link>
-                        <Link to="#" className="text-danger fs-14 lh-1">
-                          <i className="ri-delete-bin-5-line"></i>
-                        </Link>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </Card>
-        </Col>
-      </Row>
-    </Fragment>
-  );
+	const columns = [
+		{
+			Header: "Descrição",
+			accessor: "descricao",
+		},
+		{
+			Header: "Bloco",
+			accessor: "blcocoId",
+		},
+		{
+			Header: "Plataforma",
+			accessor: "plataformaId",
+		},
+		{
+			Header: "Tipo Plataforma",
+			accessor: "tipoPlataformaId",
+		},
+		{
+			Header: "Capacidade de Produção",
+			accessor: "capacidadeDeProducao",
+		},
+		{
+			Header: "Profundidade Instalada",
+			accessor: "profundidadeInstalada",
+		},
+		{
+			Header: "Latitude",
+			accessor: "latitude",
+		},
+		{
+			Header: "Longitude",
+			accessor: "longitude",
+		},
+		{
+			Header: "Data Registro",
+			accessor: "dataRegistro",
+		},
+		{
+			Header: "Data Atualização",
+			accessor: "dataAtualizacao",
+		},
+		{
+			Header: "Usuário Registro",
+			accessor: "usuarioRegistroId",
+		},
+		{
+			Header: "Atualizado Por",
+			accessor: "atualizadoPor",
+		},
+	];
+	const { translate } = useTranslation();
+	const onDelete = (plataformaId: string) =>
+		mutate({ params: { plataformaId } });
+	return (
+		<Fragment>
+			<Pageheader
+				title="Gerenciamento de Plataformas"
+				heading="Plataforma"
+				active="gestão"
+			/>
+			<Row>
+				<Col xl={12}>
+					<Card className="custom-card">
+						<Card.Header>
+							{/* <Card.Title>Responsive Datatable</Card.Title> */}
+						</Card.Header>
+						<Card.Body>
+							<div className="table-responsive">
+								<ResponsiveDataTable data={plataforma} columns={columns} />
+							</div>
+						</Card.Body>
+					</Card>
+				</Col>
+			</Row>
+		</Fragment>
+	);
 }
