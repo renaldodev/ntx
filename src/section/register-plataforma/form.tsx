@@ -8,12 +8,12 @@ import { TipoPlataformaSelect } from "./tipo-plataforma-select.component";
 
 const schema = z.object({
 	descricao: z.string(),
-	latitude: z.string(),
-	longitude: z.string(),
+	latitude: z.coerce.number(),
+	longitude: z.coerce.number(),
 	tipoPlataformaId: z.string(),
 	blcocoId: z.string(),
-	capacidadeDeProducao: z.string(),
-	profundidadeInstalada: z.string(),
+	capacidadeDeProducao: z.coerce.number(),
+	profundidadeInstalada: z.coerce.number(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -34,7 +34,6 @@ export function Form({ submit, edit, isLoading }: Props) {
 		resolver: zodResolver(schema),
 	});
 	const onSubmit: SubmitHandler<FormValues> = (data) => submit(data);
-
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<Row>
@@ -52,6 +51,14 @@ export function Form({ submit, edit, isLoading }: Props) {
 						label="Latitude"
 						control={control}
 						error={errors?.latitude?.message || ""}
+					/>
+				</Col>
+				<Col md={6} className="mb-3">
+					<TextField
+						name="longitude"
+						label="longitude"
+						control={control}
+						error={errors?.longitude?.message || ""}
 					/>
 				</Col>
 				<Col md={6} className="mb-3">
@@ -82,7 +89,7 @@ export function Form({ submit, edit, isLoading }: Props) {
 					<TipoPlataformaSelect
 						control={control}
 						error={errors.tipoPlataformaId?.message || ""}
-						label="Escolha uma Plataforma"
+						label="Tipo de Plataforma"
 						name="tipoPlataformaId"
 					/>
 				</Col>
