@@ -29,6 +29,8 @@ export const pocoContract = contract.router({
       dataDeConclusao: z.date(),
       pocoTipoId: z.number(),
       plataformaId: z.number(),
+      provinciaId: z.number(),
+      imagem: z.string()
     }),
   },
   list: {

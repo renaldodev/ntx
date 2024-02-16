@@ -10,8 +10,9 @@ import {
   blocoContract,
   pocoContract,
   plataformaContract,
-  tipoPlataformaContract
-  
+  tipoPlataformaContract,
+  provinciaContract,
+  tipoPocoContract,
 } from "./contract";
 
 export const apiUrl = "http://anpgwebapi.dowhile.ao/api";
@@ -57,7 +58,9 @@ const mobileContract = contract.router({
   plataforma: plataformaContract,
   poco: pocoContract,
   bloco: blocoContract,
- tipoPlataforma:tipoPlataformaContract,
+  tipoPlataforma: tipoPlataformaContract,
+  provincia: provinciaContract,
+  pocoTipo: tipoPocoContract,
 });
 
 export const service = initQueryClient(mobileContract, {

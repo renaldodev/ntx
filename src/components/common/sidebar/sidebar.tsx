@@ -523,7 +523,7 @@ const Sidebar = ({ local_varaiable, ThemeChanger }: any) => {
         onMouseLeave={() => Outhover()}
       >
         <div className="main-sidebar-header">
-          <Link to={`/dashboards/operators`} className="header-logo">
+          <Link to={`/home/`} className="header-logo">
             <img
               src={
                 "https://anpg.co.ao/wp-content/uploads/2019/12/ANPG_Logo_Descritivo-1.png"
