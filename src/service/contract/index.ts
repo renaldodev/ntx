@@ -1,4 +1,5 @@
 export * from './operator'
+export * from './tipoplataforma'
 export * from './bloco'
 export * from './operador'
 export * from './plataformas'
