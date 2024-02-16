@@ -19,7 +19,7 @@ export function TipoPlataformaSelect({ label, name, error, control }: Props) {
 		<SelectField control={control} error={error} label={label} name={name}>
 			<option>{label}</option>
 			{plataformas.map((o) => (
-				<option key={o.tipoPlataformaId} value={o.atualizadoPor}>
+				<option key={o.tipoPlataformaId} value={o.tipoPlataformaId}>
 					{o.descricao}
 				</option>
 			))}

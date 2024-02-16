@@ -1,5 +1,5 @@
 import { z } from "zod";
-// import { OperatorSchema } from "./schema";
+ import { PlataformaSchema } from "./schema";
 import { contract } from "../contract";
 
 export const plataformaContract = contract.router({
@@ -10,35 +10,28 @@ export const plataformaContract = contract.router({
       201: null,
     },
     body: z.object({
-      // descricao: z.string(),
-      // latitude: z.number(),
-      // longitude: z.number(),
-      // tipoPlataformaId: z.number(),
-      // blcocoId: z.number(),
-      // capacidadeDeProducao: z.number(),
-      // profundidadeInstalada: z.number(),
-
-      descricao: z.string(),
-      latitude: z.string(),
-      longitude: z.string(),
-      tipoPlataformaId: z.string(),
-      blcocoId: z.string(),
-      capacidadeDeProducao: z.string(),
-      profundidadeInstalada: z.string(),
+       descricao: z.string(),
+       latitude: z.coerce.number(),
+       longitude:z.coerce.number(),
+       tipoPlataformaId: z.string(),
+       blcocoId: z.string(),
+       capacidadeDeProducao: z.coerce.number(),
+       profundidadeInstalada:z.coerce.number(),
+    
     }),
   },
   list: {
     method: "GET",
     path: "/Plataforma/getAll",
     responses: {
-      200: z.array(z.any()),
+      200: z.array(PlataformaSchema),
     },
   },
   getById: {
     method: "GET",
     path: "/Plataforma/getbyid/:plataformaId",
     responses: {
-      200: z.array(z.any()),
+      200: z.array(PlataformaSchema),
     },
     pathParams: z.object({
       plataformaId: z.string(),

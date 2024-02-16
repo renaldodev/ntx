@@ -16,8 +16,8 @@ export function BlocoSelect({ label, name, error, control }: Props) {
 		<SelectField control={control} error={error} label={label} name={name}>
 			<option>{label}</option>
 			{blocos.map((o) => (
-				<option key={o.blocoId} value={o.usuarioRegistroId}>
-					{o.atualizadoPor}
+				<option key={o.blocoId} value={o.blocoId}>
+					{o.descricao}
 				</option>
 			))}
 		</SelectField>
