@@ -1,0 +1,5 @@
+export * from './operator'
+export * from './bloco'
+export * from './operador'
+export * from './plataformas'
+export * from './poco'
