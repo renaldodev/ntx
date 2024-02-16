@@ -8,16 +8,19 @@ type Props = {
 	error: string;
 	control: Control<any, any, any>;
 };
-export function BlocoSelect({ label, name, error, control }: Props) {
-	const { data, isLoading } = service.bloco.list.useQuery(["bloco", "list"]);
-	const blocos = data?.body || [];
+export function TipoPlataformaSelect({ label, name, error, control }: Props) {
+	const { data, isLoading } = service.tipoPlataforma.list.useQuery([
+		"tipoPlataforma",
+		"list",
+	]);
+	const plataformas = data?.body || [];
 
 	return (
 		<SelectField control={control} error={error} label={label} name={name}>
 			<option>{label}</option>
-			{blocos.map((o) => (
-				<option key={o.blocoId} value={o.usuarioRegistroId}>
-					{o.atualizadoPor}
+			{plataformas.map((o) => (
+				<option key={o.tipoPlataformaId} value={o.atualizadoPor}>
+					{o.descricao}
 				</option>
 			))}
 		</SelectField>
