@@ -13,6 +13,7 @@ import { BlocoRegister, BlocoManagement } from "./pages/blocos";
 import { Chart } from "./pages/home";
 import { PlataformManagement, PlataformaRegister } from "./pages/plataforma";
 import { PocoRegister } from "./pages/poco/register.tsx";
+import { PocoManagement } from "./pages/poco/management.tsx";
 import Error401 from "./pages/401/index.tsx";
 
 export function Router() {
@@ -43,6 +44,7 @@ export function Router() {
                 element={<PlataformManagement />}
               />
               <Route path={"/poco/create"} element={<PocoRegister />} />
+              <Route path={"/poco/management"} element={<PocoManagement />} />
             </Route>
             <Route path="*" element={<Error401 />} />
           </Routes>

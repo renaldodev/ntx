@@ -1,16 +1,30 @@
 import { z } from "zod";
 
-export const OperatorSchema = z.object({
-  id: z.number(),
-  title: z.string(),
-  price: z.number(),
-  description: z.string(),
-  category: z.string(),
-  image: z.string(),
-  rating: z.object({
-    rate: z.number(),
-    count: z.number(),
-  }),
+export const PocoSchema = z.object({
+  usuarioRegistroId: z.number(),
+  dataRegistro: z.string(),
+  atualizadoPor: z.number(),
+  dataAtualizacao: z.string(),
+  pocoId: z.number(),
+  descricao: z.string(),
+  bacia: z.string(),
+  bloco: z.string(),
+  licencaExploracao: z.string(),
+  latitude: z.number(),
+  longetitude: z.number(),
+  lamineDeAgua: z.number(),
+  dataInicioPerfuracao: z.string(),
+  dataConclusaoPerfuracao: z.string(),
+  profundidade: z.number(),
+  profundidadeTotal: z.number(),
+  nomeDaRig: z.string(),
+  classe: z.string(),
+  ambiente: z.string(),
+  dataDt: z.string(),
+  dataDeReentrada: z.string(),
+  dataDeConclusao: z.string(),
+  pocoTipoId: z.number(),
+  plataformaId: z.number(),
+  provinciaId: z.number(),
+  imagem: z.string(),
 });
-
-export type OperatorSchema = z.infer<typeof OperatorSchema>;

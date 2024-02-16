@@ -1,5 +1,5 @@
 import { z } from "zod";
-// import { OperatorSchema } from "./schema";
+import { PocoSchema } from "./schema";
 import { contract } from "../contract";
 
 export const pocoContract = contract.router({
@@ -30,14 +30,14 @@ export const pocoContract = contract.router({
       pocoTipoId: z.number(),
       plataformaId: z.number(),
       provinciaId: z.number(),
-      imagem: z.string()
+      imagem: z.string(),
     }),
   },
   list: {
     method: "GET",
     path: "/Poco/getAll",
     responses: {
-      200: z.array(z.any()),
+      200: z.array(PocoSchema),
     },
   },
   getById: {
