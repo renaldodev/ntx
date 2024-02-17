@@ -19,7 +19,7 @@ const InputGroupWithLabel: React.FC<InputGroupWithLabelProps> = ({
 	icon,
 }) => {
 	return (
-		<Col md={6} className="mb-5">
+		<Col md={6} className="mb-3">
 			<InputGroup className="mb-3">
 				<InputGroup.Text id="basic-addon1">
 					<Icon icon={icon} />
