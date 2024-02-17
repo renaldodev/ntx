@@ -8,11 +8,19 @@ type Props = FormControlProps & {
   control: Control<any, any, any>;
 };
 
-export function TextField({ name, label, control, error, ...rest }: Props) {
+export function TextField({
+  name,
+  label,
+  control,
+  error,
+  defaultValue,
+  ...rest
+}: Props) {
   return (
     <Controller
       control={control}
       name={name}
+      defaultValue={defaultValue}
       render={({ field }) => (
         <>
           <Form.Label className="">{label}</Form.Label>
