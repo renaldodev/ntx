@@ -45,7 +45,7 @@ export function FormFichaMagnetica({ submit, edit, isLoading }: Props) {
 		<Card className="m-5 p-3">
 			<Pageheader
 				title="Cadastro"
-				heading=" Ficha Gravimetrica"
+				heading=" Ficha Magnética"
 				active="cadastro"
 			/>
 			<form onSubmit={handleSubmit(onSubmit)} className="mt-5">

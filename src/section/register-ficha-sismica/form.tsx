@@ -46,11 +46,7 @@ export function FormFichaSismica({ submit, edit, isLoading }: Props) {
 	const onSubmit: SubmitHandler<FormValues> = (data) => submit(data);
 	return (
 		<Card className="m-5 p-3">
-			<Pageheader
-				title="Cadastro"
-				heading=" Ficha Gravimetrica"
-				active="cadastro"
-			/>
+			<Pageheader title="Cadastro" heading=" Ficha Sismica" active="cadastro" />
 			<form onSubmit={handleSubmit(onSubmit)} className="mt-5">
 				<Row>
 					<InputGroupWithLabel
