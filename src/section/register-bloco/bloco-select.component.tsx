@@ -3,7 +3,7 @@ import { SelectField } from "../../components/hook-form/select";
 import { service } from "../../service";
 
 type Props = {
-	label: string;
+	label?: string;
 	name: string;
 	error: string;
 	control: Control<any, any, any>;

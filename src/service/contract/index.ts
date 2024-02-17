@@ -6,4 +6,13 @@ export * from "./plataformas";
 export * from "./poco";
 export * from "./poco-tipo";
 export * from "./provincia";
-
+export * from "./ficha-hidrocarbonato";
+export * from "./tipo-de-hidrocarbonato";
+export * from "./ficha-de-perfuracao";
+export * from "./metodo-perfuracao";
+export * from "./ficha-teste";
+export * from "./ficha-geologica";
+export * from "./ficha-gravimetrica";
+export * from "./ficha-magnetica";
+export * from "./ficha-sismica";
+export * from "./tipo-de-levantamento-sismico";

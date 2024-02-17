@@ -3,7 +3,7 @@ import { SelectField } from "../../components/hook-form/select";
 import { service } from "../../service";
 
 type Props = {
-	label: string;
+	label?: string;
 	name: string;
 	error: string;
 	control: Control<any, any, any>;
@@ -16,7 +16,7 @@ export function TipoPlataformaSelect({ label, name, error, control }: Props) {
 	const plataformas = data?.body || [];
 
 	return (
-		<SelectField control={control} error={error} label={label} name={name}>
+		<SelectField control={control} error={error} label="" name={name}>
 			<option>{label}</option>
 			{plataformas.map((o) => (
 				<option key={o.tipoPlataformaId} value={o.tipoPlataformaId}>
