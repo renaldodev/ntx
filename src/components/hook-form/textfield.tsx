@@ -2,10 +2,11 @@ import { Controller, Control } from "react-hook-form";
 import { Form, FormControlProps } from "react-bootstrap";
 
 type Props = FormControlProps & {
-  label: string;
-  name: string;
-  error: string;
-  control: Control<any, any, any>;
+	label?: string;
+	name: string;
+	error: string;
+	control: Control<any, any, any>;
+	icon?: JSX.Element; // adicionei essa prop
 };
 
 export function TextField({
@@ -32,4 +33,5 @@ export function TextField({
       )}
     />
   );
+
 }

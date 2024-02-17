@@ -16,7 +16,6 @@ const schema = z.object({
 });
 
 type FormValues = z.infer<typeof schema>;
-
 type Props = {
 	submit: (data: FormValues) => void;
 	edit?: boolean;

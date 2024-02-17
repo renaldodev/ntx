@@ -13,6 +13,16 @@ import {
   tipoPlataformaContract,
   provinciaContract,
   tipoPocoContract,
+  FichaDeHidrocarbonetoContract,
+  tipoHidrocarbonato,
+  MetodoPerfuracao,
+  FichaDePerfuracaoContract,
+  FichaDeTesteContract,
+  FichaGeologica,
+  FichaGravimetricaContract,
+  FichaMagneticaContract,
+  FichaSismicaContract,
+  tipoLevantamentoSismico
 } from "./contract";
 
 export const apiUrl = "http://anpgwebapi.dowhile.ao/api";
@@ -61,6 +71,17 @@ const mobileContract = contract.router({
   tipoPlataforma: tipoPlataformaContract,
   provincia: provinciaContract,
   pocoTipo: tipoPocoContract,
+  hridroCarbonato:FichaDeHidrocarbonetoContract,
+  tipoHidrocarbonato:tipoHidrocarbonato,
+  metodoPerfuracao:MetodoPerfuracao,
+  fichaPerfuracao:FichaDePerfuracaoContract,
+  fichaTeste:FichaDeTesteContract,
+  fichaGeologica:FichaGeologica,
+  fichaGravimetrica:FichaGravimetricaContract,
+  fichaMagnetica:FichaMagneticaContract,
+  fichaSismica:FichaSismicaContract,
+  tipoLevantamentoSismico:tipoLevantamentoSismico,
+
 });
 
 export const service = initQueryClient(mobileContract, {
