@@ -16,7 +16,7 @@ export function OperadorSelect({ label, name, error, control }: Props) {
 	const operadores = data?.body || [];
 
 	return (
-		<SelectField control={control} error={error} label={label} name={name}>
+		<SelectField control={control} error={error} label={label} name={name}  >
 			<option>{label}</option>
 			{operadores.map((o) => (
 				<option key={o.usuarioRegistroId} value={o.usuarioRegistroId}>

@@ -11,6 +11,7 @@ export const OperadorSchema = z.object({
   email: z.string(),
   telefone1: z.string(),
   telefone2: z.string(),
+  operadorId: z.number(),
 });
 
 export type OperadorSchema = z.infer<typeof OperadorSchema>;

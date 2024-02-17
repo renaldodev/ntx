@@ -10,26 +10,28 @@ type Props = FormControlProps & {
 };
 
 export function TextField({
-	name,
-	label,
-	control,
-	icon,
-	error,
-	...rest
+  name,
+  label,
+  control,
+  error,
+  defaultValue,
+  ...rest
 }: Props) {
-	return (
-		<Controller
-			control={control}
-			name={name}
-			render={({ field }) => (
-				<>
-					<Form.Label className="">{label}</Form.Label>
-					<Form.Control type="text" {...field} placeholder={label} {...rest} />
-					{error && (
-						<span style={{ color: "red", marginLeft: 5 }}>{error}</span>
-					)}
-				</>
-			)}
-		/>
-	);
+  return (
+    <Controller
+      control={control}
+      name={name}
+      defaultValue={defaultValue}
+      render={({ field }) => (
+        <>
+          <Form.Label className="">{label}</Form.Label>
+          <Form.Control {...field} placeholder={label} {...rest} />
+          {error && (
+            <span style={{ color: "red", marginLeft: 5 }}>{error}</span>
+          )}
+        </>
+      )}
+    />
+  );
+
 }
