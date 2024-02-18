@@ -6,6 +6,7 @@ import { useTranslation } from "../../hooks";
 import { enqueueSnackbar } from "notistack";
 import { Button, Card, Table } from "react-bootstrap";
 import { Column, CustomTable } from "../../components/common/table";
+import { FichaGeologicaListagem } from "./ficha-geologica";
 
 const img =
   "https://hips.hearstapps.com/hmg-prod/images/robert-pattinson-as-bruce-wayne-batman-in-the-batman-1645187114.jpg";
@@ -80,6 +81,7 @@ export function PocoManagement() {
       ) : (
         <>
           <DetalhesPoco data={pocos.find((poco) => poco.pocoId === pocoId)} />
+          <FichaGeologicaListagem pocoId={pocoId}/>
           <Card className={"m-5 p-3"}>
             <Button variant="dark" onClick={() => setVisibility(1)}>
               Voltar
