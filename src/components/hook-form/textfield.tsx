@@ -6,32 +6,30 @@ type Props = FormControlProps & {
 	name: string;
 	error: string;
 	control: Control<any, any, any>;
-	icon?: JSX.Element; // adicionei essa prop
 };
 
 export function TextField({
-  name,
-  label,
-  control,
-  error,
-  defaultValue,
-  ...rest
+	name,
+	label,
+	control,
+	error,
+	defaultValue,
+	...rest
 }: Props) {
-  return (
-    <Controller
-      control={control}
-      name={name}
-      defaultValue={defaultValue}
-      render={({ field }) => (
-        <>
-          <Form.Label className="">{label}</Form.Label>
-          <Form.Control {...field} placeholder={label} {...rest} />
-          {error && (
-            <span style={{ color: "red", marginLeft: 5 }}>{error}</span>
-          )}
-        </>
-      )}
-    />
-  );
-
+	return (
+		<Controller
+			control={control}
+			name={name}
+			defaultValue={defaultValue}
+			render={({ field }) => (
+				<>
+					<Form.Label className="">{label}</Form.Label>
+					<Form.Control {...field} placeholder={label} {...rest} />
+					{error && (
+						<span style={{ color: "red", marginLeft: 5 }}>{error}</span>
+					)}
+				</>
+			)}
+		/>
+	);
 }
