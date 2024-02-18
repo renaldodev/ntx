@@ -24,11 +24,15 @@ export function GrupoTextField({
 					<Form.Label style={{ position: "absolute", top: "-23px" }}>
 						{label}
 					</Form.Label>
-
-					<Form.Control {...field} placeholder={label} {...rest} />
-
+					<Form.Control {...field} placeholder={label} {...rest} />{" "}
 					{error && (
-						<span style={{ color: "red", marginLeft: 5 }}>{error}</span>
+						<span
+							style={{
+								color: "red",
+							}}
+						>
+							{error}
+						</span>
 					)}
 				</>
 			)}
