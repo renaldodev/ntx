@@ -14,8 +14,7 @@ import { FichaTesteListagem } from "./ficha-teste";
 
 import { FichaGravimetricaListagem } from "./ficha-gravimetrica";
 import { FichaHidrocarbonatoListagem } from "./ficha-hidrocarbonato";
-import { FichaMagneticaListagem} from "./ficha-magnetica";
-
+import { FichaMagneticaListagem } from "./ficha-magnetica";
 
 const img =
 	"https://hips.hearstapps.com/hmg-prod/images/robert-pattinson-as-bruce-wayne-batman-in-the-batman-1645187114.jpg";
@@ -70,44 +69,43 @@ export function PocoManagement() {
 
 	const onDelete = (operadorId: string) => mutate({ params: { operadorId } });
 
-  return (
-    <Fragment>
-      {visibility === 1 ? (
-        <>
-          <Pageheader
-            title="Gestão de poços"
-            heading="Poços"
-            active="listagem"
-          />
-          <Card className={"m-5 p-3"}>
-            <CustomTable
-              data={pocos}
-              columns={columns}
-              leftAction={LeftAction}
-            />
-          </Card>
-        </>
-      ) : (
-        <>
-          <DetalhesPoco data={pocos.find((poco) => poco.pocoId === pocoId)} />
-          <FichaGeologicaListagem pocoId={pocoId}/>
-          <FichaGravimetricaListagem pocoId={pocoId} />
-          <FichaHidrocarbonatoListagem pocoId={pocoId} />
-          <FichaMagneticaListagem pocoId={pocoId} />
-          <FichaPerfuracaoListagem pocoId={pocoId} />
+	return (
+		<Fragment>
+			{visibility === 1 ? (
+				<>
+					<Pageheader
+						title="Gestão de poços"
+						heading="Poços"
+						active="listagem"
+					/>
+					<Card className={"m-5 p-3"}>
+						<CustomTable
+							data={pocos}
+							columns={columns}
+							leftAction={LeftAction}
+						/>
+					</Card>
+				</>
+			) : (
+				<>
+					<DetalhesPoco data={pocos.find((poco) => poco.pocoId === pocoId)} />
+					<FichaGeologicaListagem pocoId={pocoId} />
+					<FichaGravimetricaListagem pocoId={pocoId} />
+					<FichaHidrocarbonatoListagem pocoId={pocoId} />
+					<FichaMagneticaListagem pocoId={pocoId} />
+					<FichaPerfuracaoListagem pocoId={pocoId} />
 					<FichaSismicaListagem pocoId={pocoId} />
 					<FichaTesteListagem pocoId={pocoId} />
-          
-          <Card className={"m-5 p-3"}>
-            <Button variant="dark" onClick={() => setVisibility(1)}>
-              Voltar
-            </Button>
-          </Card>
-        </>
-      )}
-    </Fragment>
-  );
 
+					<Card className={"m-5 p-3"}>
+						<Button variant="dark" onClick={() => setVisibility(1)}>
+							Voltar
+						</Button>
+					</Card>
+				</>
+			)}
+		</Fragment>
+	);
 }
 
 function DetalhesPoco({ data }: { data: any }) {

@@ -6,6 +6,7 @@ type Props = FormControlProps & {
 	name: string;
 	error: string;
 	control: Control<any, any, any>;
+	icon?: JSX.Element;
 };
 
 export function TextField({
@@ -25,9 +26,7 @@ export function TextField({
 				<>
 					<Form.Label className="">{label}</Form.Label>
 					<Form.Control {...field} placeholder={label} {...rest} />
-					{error && (
-						<span style={{ color: "red", marginLeft: 5 }}>{error}</span>
-					)}
+					{error && <span style={{ color: "red" }}>{error}</span>}
 				</>
 			)}
 		/>

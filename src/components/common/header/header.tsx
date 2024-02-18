@@ -316,9 +316,9 @@ const Header = ({ local_varaiable, ThemeChanger }: any) => {
 										/>
 									</div>
 									<div className="d-sm-block d-none">
-										<p className="fw-semibold mb-0 lh-1">Json Taylor</p>
+										<p className="fw-semibold mb-0 lh-1">Helio.Texeira</p>
 										<span className="op-7 fw-normal d-block fs-11">
-											Web Designer
+											Administrador
 										</span>
 									</div>
 								</div>
@@ -329,7 +329,7 @@ const Header = ({ local_varaiable, ThemeChanger }: any) => {
 								className="main-header-dropdown  pt-0 overflow-hidden header-profile-dropdown"
 								aria-labelledby="mainHeaderProfile"
 							>
-								<Dropdown.Item className="d-flex" href={"/pages/profile/"}>
+								<Dropdown.Item className="d-flex" href={"#"}>
 									<i className="ti ti-user-circle fs-18 me-2 op-7"></i>Profile
 								</Dropdown.Item>
 								<Dropdown.Item className="d-flex" href={"/"}>
