@@ -24,7 +24,7 @@ import {
   tipoLevantamentoSismico
 } from "./contract";
 
-export const apiUrl = "http://anpgwebapi.dowhile.ao/api";
+export const apiUrl = "https://anpgwebapi.dowhile.ao/api";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
