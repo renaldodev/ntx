@@ -8,8 +8,10 @@ export function PlataformaRegister() {
 		onSuccess() {
 			enqueueSnackbar("Plataforma adicionada com sucesso");
 		},
-		onError() {
-			enqueueSnackbar("Algo deu errado", { variant: "error" });
+		onError(error) {
+			enqueueSnackbar(`Algo deu errado ${JSON.stringify(error)}`, {
+				variant: "error",
+			});
 		},
 	});
 	return (

@@ -15,6 +15,7 @@ import { BlocoSelect } from "../register-bloco/bloco-select.component";
 import { TipoPlataformaSelect } from "./tipo-plataforma-select.component";
 import { Icon } from "@iconify/react";
 import Pageheader from "../../components/pageheader/pageheader";
+import InputGroupWithLabel from "../../components/common/inputGroup";
 
 const schema = z.object({
 	descricao: z.string(),
@@ -49,76 +50,46 @@ export function Form({ submit, edit, isLoading }: Props) {
 			<Pageheader title="Cadastro" heading="Plataforma" active="cadastro" />
 			<form onSubmit={handleSubmit(onSubmit)} className="mt-5">
 				<Row>
-					<Col md={6} className="mb-3 ">
-						<InputGroup className="mb-3">
-							<InputGroup.Text id="basic-addon1">
-								<Icon icon="material-symbols:description" />
-							</InputGroup.Text>
-							<GrupoTextField
-								name="descricao"
-								label="Descrição"
-								control={control}
-								error={errors?.descricao?.message || ""}
-							/>
-						</InputGroup>
-					</Col>
+					<InputGroupWithLabel
+						name="descricao"
+						label="Descrição"
+						control={control}
+						error={errors?.descricao?.message || ""}
+						icon="material-symbols:description"
+					/>
+					<InputGroupWithLabel
+						name="latitude"
+						label="Latitude"
+						control={control}
+						error={errors?.latitude?.message || ""}
+						icon="tabler:world-latitude"
+					/>
+					<InputGroupWithLabel
+						name="longitude"
+						label="longitude"
+						control={control}
+						error={errors?.longitude?.message || ""}
+						icon="mingcute:earth-longitude-fill"
+					/>
+					<InputGroupWithLabel
+						name="capacidadeDeProducao"
+						label="Capacidade de produção"
+						control={control}
+						error={errors?.capacidadeDeProducao?.message || ""}
+						icon="grommet-icons:capacity"
+					/>
+					<InputGroupWithLabel
+						name="profundidadeInstalada"
+						label="Profundidade instalada"
+						control={control}
+						error={errors?.profundidadeInstalada?.message || ""}
+						icon="iconoir:depth"
+					/>
 
 					<Col md={6} className="mb-3">
 						<InputGroup className="mb-3">
 							<InputGroup.Text className="" id="basic-addon1">
-								<Icon icon="cbi:friends-of-hue-flat-p" />
-							</InputGroup.Text>
-							<GrupoTextField
-								name="latitude"
-								label="Latitude"
-								control={control}
-								error={errors?.latitude?.message || ""}
-							/>
-						</InputGroup>
-					</Col>
-					<Col md={6} className="mb-3">
-						<InputGroup className="mb-3">
-							<InputGroup.Text className="" id="basic-addon1">
-								<Icon icon="mdi:longitude" />
-							</InputGroup.Text>
-							<GrupoTextField
-								name="longitude"
-								label="longitude"
-								control={control}
-								error={errors?.longitude?.message || ""}
-							/>
-						</InputGroup>
-					</Col>
-					<Col md={6} className="mb-3">
-						<InputGroup className="mb-3">
-							<InputGroup.Text className="" id="basic-addon1">
-								<Icon icon="grommet-icons:capacity" />
-							</InputGroup.Text>
-							<GrupoTextField
-								name="capacidadeDeProducao"
-								label="Capacidade de produção"
-								control={control}
-								error={errors?.capacidadeDeProducao?.message || ""}
-							/>
-						</InputGroup>
-					</Col>
-					<Col md={6} className="mb-3">
-						<InputGroup className="mb-3">
-							<InputGroup.Text className="" id="basic-addon1">
-								<Icon icon="mdi:selection-ellipse-arrow-inside" />
-							</InputGroup.Text>
-							<GrupoTextField
-								name="profundidadeInstalada"
-								label="Profundidade instalada"
-								control={control}
-								error={errors?.profundidadeInstalada?.message || ""}
-							/>
-						</InputGroup>
-					</Col>
-					<Col md={6} className="mb-3">
-						<InputGroup className="mb-3">
-							<InputGroup.Text className="" id="basic-addon1">
-								<Icon icon="ph:wall-fill" />
+								<Icon icon="flowbite:caret-sort-solid" />
 							</InputGroup.Text>
 							<BlocoSelect
 								control={control}
@@ -131,7 +102,7 @@ export function Form({ submit, edit, isLoading }: Props) {
 					<Col md={6} className="mb-3">
 						<InputGroup className="mb-3">
 							<InputGroup.Text className="" id="basic-addon1">
-								<Icon icon="carbon:choose-item" />
+								<Icon icon="flowbite:caret-sort-solid" />
 							</InputGroup.Text>
 							<TipoPlataformaSelect
 								control={control}
@@ -145,7 +116,7 @@ export function Form({ submit, edit, isLoading }: Props) {
 					<Col md={12}>
 						<Button
 							type="submit"
-							variant="primary"
+							variant="success"
 							className="me-3"
 							style={{ padding: "5px 60px" }}
 						>
@@ -155,12 +126,7 @@ export function Form({ submit, edit, isLoading }: Props) {
 								message
 							)}
 						</Button>
-						<Button
-							type="submit"
-							variant="secondary"
-							className=""
-							style={{ padding: "5px 60px" }}
-						>
+						<Button variant="dark" className="" style={{ padding: "5px 60px" }}>
 							Cancelar
 						</Button>
 					</Col>
