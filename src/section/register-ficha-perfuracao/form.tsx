@@ -34,9 +34,17 @@ type Props = {
 	submit: (data: FormValues) => void;
 	edit?: boolean;
 	isLoading: boolean;
+	pocoId: number;
+	back: () => void;
 };
 
-export function FormFichaPerfuracao({ submit, edit, isLoading }: Props) {
+export function FormFichaPerfuracao({
+	submit,
+	edit,
+	isLoading,
+	pocoId,
+	back,
+}: Props) {
 	const message = edit ? "Atualizar" : "Salvar";
 	const {
 		handleSubmit,
@@ -134,19 +142,7 @@ export function FormFichaPerfuracao({ submit, edit, isLoading }: Props) {
 							/>
 						</InputGroup>
 					</Col>
-					<Col md={6} className="mb-3">
-						<InputGroup className="mb-3">
-							<InputGroup.Text className="" id="basic-addon1">
-								<Icon icon="ph:wall-fill" />
-							</InputGroup.Text>
-							<TipoPocoSelect
-								control={control}
-								error={errors.pocoId?.message || ""}
-								label="Poço"
-								name="pocoId"
-							/>
-						</InputGroup>
-					</Col>
+
 					<Col md={6} className="mb-3">
 						<InputGroup className="mb-3">
 							<InputGroup.Text className="" id="basic-addon1">
@@ -173,11 +169,18 @@ export function FormFichaPerfuracao({ submit, edit, isLoading }: Props) {
 							/>
 						</InputGroup>
 					</Col>
-
+					<TextField
+						control={control}
+						style={{ visibility: "hidden" }}
+						error={errors.pocoId?.message || ""}
+						label=""
+						name="pocoId"
+						defaultValue={pocoId}
+					/>
 					<Col md={12}>
 						<Button
 							type="submit"
-							variant="primary"
+							variant="success"
 							className="me-3"
 							style={{ padding: "5px 60px" }}
 						>
@@ -188,9 +191,10 @@ export function FormFichaPerfuracao({ submit, edit, isLoading }: Props) {
 							)}
 						</Button>
 						<Button
-							variant="secondary"
+							variant="dark"
 							className=""
 							style={{ padding: "5px 60px" }}
+							onClick={back}
 						>
 							Cancelar
 						</Button>

@@ -33,9 +33,11 @@ type Props = {
 	submit: (data: FormValues) => void;
 	edit?: boolean;
 	isLoading: boolean;
+	pocoId: number;
+	back: () => void;
 };
 
-export function FormTeste({ submit, edit, isLoading }: Props) {
+export function FormTeste({ submit, edit, isLoading, back, pocoId }: Props) {
 	const message = edit ? "Atualizar" : "Salvar";
 	const {
 		handleSubmit,
@@ -143,24 +145,19 @@ export function FormTeste({ submit, edit, isLoading }: Props) {
 							/>
 						</InputGroup>
 					</Col>
-					<Col md={6} className="mb-3">
-						<InputGroup className="mb-3">
-							<InputGroup.Text className="" id="basic-addon1">
-								<Icon icon="ph:wall-fill" />
-							</InputGroup.Text>
-							<TipoPocoSelect
-								control={control}
-								error={errors.pocoId?.message || ""}
-								label="Poço"
-								name="pocoId"
-							/>
-						</InputGroup>
-					</Col>
 
+					<TextField
+						control={control}
+						style={{ visibility: "hidden" }}
+						error={errors.pocoId?.message || ""}
+						label=""
+						name="pocoId"
+						defaultValue={pocoId}
+					/>
 					<Col md={12}>
 						<Button
 							type="submit"
-							variant="primary"
+							variant="success"
 							className="me-3"
 							style={{ padding: "5px 60px" }}
 						>
@@ -172,8 +169,9 @@ export function FormTeste({ submit, edit, isLoading }: Props) {
 						</Button>
 						<Button
 							type="submit"
-							variant="secondary"
+							variant="dark"
 							className=""
+							onClick={back}
 							style={{ padding: "5px 60px" }}
 						>
 							Cancelar
