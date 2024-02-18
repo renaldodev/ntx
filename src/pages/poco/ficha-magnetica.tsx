@@ -4,18 +4,18 @@ import { MessageModal } from "../../components/common/message-modal";
 import { service,queryClient } from "../../service";
 import { ReactNode, useState, Fragment } from "react";
 import { Link } from "react-router-dom";
-import { FormFichaGeologica } from "../../section/register-ficha-geologica";
+import { FormFichaMagnetica } from "../../section/register-ficha-magnetica";
 
-export function FichaGeologicaListagem({
+export function FichaMagneticaListagem({
   pocoId,
   action,
 }: {
   pocoId: number;
   action?: () => void;
 }) {
-  const { data } = service.fichaGeologica.list.useQuery([
+  const { data } = service.fichaMagnetica.list.useQuery([
     "ficha",
-    "geologica",
+    "magnetica",
     "list",
   ]);
   const [fichaId, setFichaId] = useState(0);
@@ -41,19 +41,19 @@ export function FichaGeologicaListagem({
   const ficha = fichasComId?.find((ficha) => ficha.id === fichaId);
 
   const columns: Column[] = [
+    { dataKey: "atualizadoPor", title: "Atualizado Por", display: true },
+    { dataKey: "dataAtualizacao", title: "Data de Atualização", display: true },
     {
-      dataKey: "descricaoLitologica",
-      title: "Descrição Litológica",
+      dataKey: "fichaMagneticaId",
+      title: "ID da Ficha Magnética",
       display: true,
     },
-    { dataKey: "idadeDaFormacao", title: "Idade da Formação", display: true },
+    { dataKey: "dataAtividade", title: "Data de Atividade", display: true },
     {
-      dataKey: "ambienteDeDeposicao",
-      title: "Ambiente de Deposição",
+      dataKey: "valorDaAnomaliaMagnetica",
+      title: "Valor da Anomalia Magnética",
       display: true,
     },
-    { dataKey: "contratos", title: "Contratos", display: true },
-    { dataKey: "rig", title: "Rig", display: true },
   ];
   return (
     <>
@@ -66,7 +66,7 @@ export function FichaGeologicaListagem({
               marginBottom: "16px",
             }}
           >
-            <h3>Ficha geológica</h3>
+            <h3>Ficha magnética</h3>
             <Button
               onClick={() => setVisibility(3)}
               variant="success"
@@ -83,10 +83,10 @@ export function FichaGeologicaListagem({
         </Card>
       ) : null}
       {visibility === 2 ? (
-        <FichaGeologicaDetalhes data={ficha} action={() => setVisibility(1)} />
+        <FichaMagneticaDetalhes data={ficha} action={() => setVisibility(1)} />
       ) : null}
       {visibility === 3 ? (
-        <FichaGeologicaRegister
+        <FichaMagneticaRegister
           pocoId={pocoId}
           action={() => setVisibility(1)}
         />
@@ -95,7 +95,7 @@ export function FichaGeologicaListagem({
   );
 }
 
-export const FichaGeologicaDetalhes = ({
+export const FichaMagneticaDetalhes = ({
   data,
   action,
 }: {
@@ -108,70 +108,17 @@ export const FichaGeologicaDetalhes = ({
     { dataKey: "atualizadoPor", title: "Atualizado Por", display: true },
     { dataKey: "dataAtualizacao", title: "Data de Atualização", display: true },
     {
-      dataKey: "fichaGeologicaId",
-      title: "ID da Ficha Geológica",
+      dataKey: "fichaMagneticaId",
+      title: "ID da Ficha Magnética",
       display: true,
     },
+    { dataKey: "dataAtividade", title: "Data de Atividade", display: true },
     {
-      dataKey: "formacaoGeologicaAlvo",
-      title: "Formação Geológica Alvo",
+      dataKey: "valorDaAnomaliaMagnetica",
+      title: "Valor da Anomalia Magnética",
       display: true,
     },
-    {
-      dataKey: "descricaoLitologica",
-      title: "Descrição Litológica",
-      display: true,
-    },
-    { dataKey: "idadeDaFormacao", title: "Idade da Formação", display: true },
-    {
-      dataKey: "ambienteDeDeposicao",
-      title: "Ambiente de Deposição",
-      display: true,
-    },
-    { dataKey: "contratos", title: "Contratos", display: true },
-    { dataKey: "rig", title: "Rig", display: true },
-    { dataKey: "mudlogging", title: "Mudlogging", display: true },
-    { dataKey: "mud_Enginnerring", title: "Engenharia de Lama", display: true },
-    {
-      dataKey: "directionalDrilling",
-      title: "Perfuração Direcional",
-      display: true,
-    },
-    { dataKey: "lwd", title: "LWD", display: true },
-    { dataKey: "mwd", title: "MWD", display: true },
-    { dataKey: "wireLine", title: "Wire Line", display: true },
-    { dataKey: "coring", title: "Amostragem", display: true },
-    { dataKey: "core", title: "Núcleo", display: true },
-    { dataKey: "coreLogging", title: "Registro de Núcleo", display: true },
-    { dataKey: "wellSeismic", title: "Sísmica de Poço", display: true },
-    { dataKey: "cement", title: "Cimento", display: true },
-    { dataKey: "testing", title: "Teste", display: true },
-    { dataKey: "wellHead", title: "Cabeça de Poço", display: true },
-    {
-      dataKey: "upperCompletion",
-      title: "Completamento Superior",
-      display: true,
-    },
-    {
-      dataKey: "lowerCompletion",
-      title: "Completamento Inferior",
-      display: true,
-    },
-    { dataKey: "phase", title: "Fase", display: true },
-    {
-      dataKey: "profundidadeDeInicio",
-      title: "Profundidade de Início",
-      display: true,
-    },
-    {
-      dataKey: "profundidadeDeConclusao",
-      title: "Profundidade de Conclusão",
-      display: true,
-    },
-    { dataKey: "mudType", title: "Tipo de Lama", display: true },
-    { dataKey: "dens", title: "Densidade", display: true },
-    { dataKey: "visc", title: "Viscosidade", display: true },
-    { dataKey: "pocoId", title: "ID do Poço", display: true },
+    { dataKey: "dataDaMedicao", title: "Data da Medição", display: true },
   ];
   return (
     <Card className={"m-5 p-3"}>
@@ -182,7 +129,7 @@ export const FichaGeologicaDetalhes = ({
           marginBottom: "16px",
         }}
       >
-        <h3>Detalhes da ficha geológica</h3>
+        <h3>Detalhes da ficha magnética</h3>
         <Button onClick={action} variant="success" style={{ width: 200 }}>
           voltar
         </Button>
@@ -193,7 +140,7 @@ export const FichaGeologicaDetalhes = ({
   );
 };
 
-export function FichaGeologicaRegister({
+export function FichaMagneticaRegister({
   pocoId,
   action,
 }: {
@@ -206,12 +153,14 @@ export function FichaGeologicaRegister({
     message: "",
   });
 
-  const { mutate } = service.fichaGeologica.create.useMutation({
+  const { mutate } = service.fichaMagnetica.create.useMutation({
     onSuccess() {
-      queryClient.invalidateQueries({ queryKey: ["ficha", "geologia","list"] });
+      queryClient.invalidateQueries({ queryKey: [ "ficha",
+      "magnetica",
+      "list",] });
       setModalActive({
         show: true,
-        message: "Ficha Geologica adicionada com sucesso!",
+        message: "Ficha Magnética adicionada com sucesso!",
         title: "Sucesso",
       });
     },
@@ -232,7 +181,7 @@ export function FichaGeologicaRegister({
         }}
         {...modalActive}
       />
-      <FormFichaGeologica
+      <FormFichaMagnetica
         pocoId={pocoId}
         back={action}
         submit={(body) => mutate({ body })}
