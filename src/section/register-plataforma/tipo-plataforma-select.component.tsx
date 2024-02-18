@@ -16,7 +16,7 @@ export function TipoPlataformaSelect({ label, name, error, control }: Props) {
 	const plataformas = data?.body || [];
 
 	return (
-		<SelectField control={control} error={error} label="" name={name}>
+		<SelectField control={control} error={error} label={label} name={name}>
 			<option>{label}</option>
 			{plataformas.map((o) => (
 				<option key={o.tipoPlataformaId} value={o.tipoPlataformaId}>

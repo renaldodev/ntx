@@ -7,7 +7,7 @@ import { useTranslation } from "../../hooks";
 import { enqueueSnackbar } from "notistack";
 import { Column, CustomTable } from "../../components/common/table";
 import { PlataformaForm } from "./poco-form";
-
+import { Icon } from "@iconify/react";
 const img =
   "https://hips.hearstapps.com/hmg-prod/images/robert-pattinson-as-bruce-wayne-batman-in-the-batman-1645187114.jpg";
 
@@ -144,28 +144,85 @@ export function PlataformaManagement() {
 
 function DetalhesPlataforma({ data }: { data: any }) {
   const columns: Column[] = [
-    { dataKey: "descricao", title: "Descriação", display: true },
+    {
+      dataKey: "descricao",
+      title: (
+        <>
+          <Icon icon="material-symbols:description" /> Descrição
+        </>
+      ),
+      display: true,
+    },
     {
       dataKey: "capacidadeDeProducao",
-      title: "Capacidade de produção",
+      title: (
+        <>
+          <Icon icon="grommet-icons:capacity" /> Capacidade de Produção
+        </>
+      ),
       display: true,
     },
     {
       dataKey: "profundidadeInstalada",
-      title: "Profundidade Instalada",
+      title: (
+        <>
+          <Icon icon="iconoir:depth" /> Profundidade Instalada
+        </>
+      ),
       display: true,
     },
 
-    { dataKey: "longitude", title: "Longitude", display: true },
     {
-      dataKey: "latitude",
-      title: "Latitude",
+      dataKey: "longitude",
+      title: (
+        <>
+          <Icon icon="mingcute:earth-longitude-fill" /> Longitude
+        </>
+      ),
       display: true,
     },
-    { title: "ID", dataKey: "plataformaId", display: false },
-    { dataKey: "dataRegistro", title: "Data de Registro" },
-    { dataKey: "atualizadoPor", title: "Atualizado Por" },
-    { dataKey: "dataAtualizacao", title: "Data de Atualização" },
+    {
+      dataKey: "latitude",
+      title: (
+        <>
+          <Icon icon="tabler:world-latitude" /> Latitude
+        </>
+      ),
+      display: true,
+    },
+    {
+      title: (
+        <>
+          <Icon icon="teenyicons:id-outline" /> ID
+        </>
+      ),
+      dataKey: "plataformaId",
+      display: false,
+    },
+    {
+      dataKey: "dataRegistro",
+      title: (
+        <>
+          <Icon icon="fontisto:date" /> Data de Registro
+        </>
+      ),
+    },
+    {
+      dataKey: "atualizadoPor",
+      title: (
+        <>
+          <Icon icon="icon-park-twotone:me" /> Actualizado Por
+        </>
+      ),
+    },
+    {
+      dataKey: "dataAtualizacao",
+      title: (
+        <>
+          <Icon icon="fontisto:date" /> Data de Actualização
+        </>
+      ),
+    },
   ];
   return (
     <>
@@ -244,11 +301,31 @@ function PocosDaPlataforma({
   action: () => void;
 }) {
   const columns: Column[] = [
-    { dataKey: "descricao", title: "Descrição", display: true },
-    { dataKey: "bacia", title: "Bacia", display: true },
+    {
+      dataKey: "descricao",
+      title: (
+        <>
+          <Icon icon="material-symbols:description" /> Descrição
+        </>
+      ),
+      display: true,
+    },
+    {
+      dataKey: "bacia",
+      title: (
+        <>
+          <Icon icon="material-symbols:description" /> Bacia
+        </>
+      ),
+      display: true,
+    },
     {
       dataKey: "profundidade",
-      title: "Profundidade",
+      title: (
+        <>
+          <Icon icon="iconoir:depth" /> Profundidade
+        </>
+      ),
       display: true,
     },
   ];
@@ -263,11 +340,7 @@ function PocosDaPlataforma({
           }}
         >
           <h3>Poços associados a plataforma</h3>
-          <Button
-            onClick={action}
-            variant="success"
-            style={{ width: 200, background: "green" }}
-          >
+          <Button onClick={action} variant="success" style={{ width: 200 }}>
             Adicionar poço
           </Button>
         </div>
