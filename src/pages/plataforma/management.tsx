@@ -325,33 +325,21 @@ function PocosDaPlataforma({
 }) {
   const columns: Column[] = [
     {
-      dataKey: "descricao",
-      title: (
-        <>
-          <Icon icon="material-symbols:description" /> Descrição
-        </>
-      ),
-      display: true,
+        dataKey: "descricao",
+        title: <>Descrição</>,
+        display: true,
     },
     {
-      dataKey: "bacia",
-      title: (
-        <>
-          <Icon icon="material-symbols:description" /> Bacia
-        </>
-      ),
-      display: true,
+        dataKey: "bacia",
+        title: <>Bacia</>,
+        display: true,
     },
     {
-      dataKey: "profundidade",
-      title: (
-        <>
-          <Icon icon="iconoir:depth" /> Profundidade
-        </>
-      ),
-      display: true,
+        dataKey: "profundidade",
+        title: <>Profundidade</>,
+        display: true,
     },
-  ];
+];
   return (
     <>
       <Card className={"m-5 p-3"}>
