@@ -26,6 +26,7 @@ export function PlataformaManagement() {
   const [plataformaId, setPlataformaId] = useState(0);
   const [plataformaData, setPlataformaData] = useState<any>([]);
   const [pocosData, setPocosData] = useState<any>([]);
+  const [mostrarPoco, setMostrarPoco] = useState(false);
 
   const { data } = service.plataforma.list.useQuery(["plataforma", "list"]);
   const { data: pocos } = service.poco.list.useQuery(["poco", "list"]);
@@ -110,22 +111,29 @@ export function PlataformaManagement() {
       {visibility === 2 ? (
         <>
           <DetalhesPlataforma data={plataformaData} />
-          <PocosDaPlataforma data={pocosData} />
-          <PocoRegister
-            plataformaId={plataformaId}
-            back={() => setVisibility(1)}
-          />
-
-          <Card className={"m-5 p-3"}>
-            <Button
-              variant="secondary"
-              className="m-4"
-              style={{ padding: "5px 60px" }}
-              onClick={() => setVisibility(1)}
-            >
-              Canselar
-            </Button>
-          </Card>
+          {mostrarPoco === false ? (
+            <PocosDaPlataforma
+              data={pocosData}
+              action={() => setMostrarPoco(!mostrarPoco)}
+            />
+          ) : (
+            <PocoRegister
+              plataformaId={plataformaId}
+              back={() => setMostrarPoco(false)}
+            />
+          )}
+          {mostrarPoco === false ? (
+            <Card className={"m-5 p-3"}>
+              <Button
+                variant="secondary"
+                className="m-4"
+                style={{ padding: "5px 60px" }}
+                onClick={() => setVisibility(1)}
+              >
+                Voltar
+              </Button>
+            </Card>
+          ) : null}
         </>
       ) : (
         <div />
@@ -228,7 +236,13 @@ const TabelaColum: React.FC<TableColumProps> = ({ data, columns }) => {
   );
 };
 
-function PocosDaPlataforma({ data }: { data: any }) {
+function PocosDaPlataforma({
+  data,
+  action,
+}: {
+  data: any;
+  action: () => void;
+}) {
   const columns: Column[] = [
     { dataKey: "descricao", title: "Descrição", display: true },
     { dataKey: "bacia", title: "Bacia", display: true },
@@ -241,7 +255,22 @@ function PocosDaPlataforma({ data }: { data: any }) {
   return (
     <>
       <Card className={"m-5 p-3"}>
-        <h3>Poços associados a plataforma</h3>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "16px",
+          }}
+        >
+          <h3>Poços associados a plataforma</h3>
+          <Button
+            onClick={action}
+            variant="success"
+            style={{ width: 200, background: "green" }}
+          >
+            Adicionar poço
+          </Button>
+        </div>
         <CustomTable data={data} columns={columns} />
       </Card>
     </>

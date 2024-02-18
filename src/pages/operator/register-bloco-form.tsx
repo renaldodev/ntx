@@ -88,7 +88,7 @@ export function BlocoForm({
 				<Col md={12}>
 					<Button
 						type="submit"
-						variant="primary"
+						variant="success"
 						className="m-4"
 						style={{ padding: "5px 60px" }}
 					>
@@ -100,7 +100,7 @@ export function BlocoForm({
 					</Button>
 					{back && (
 						<Button
-							variant="secondary"
+							variant="dark"
 							className="m-4"
 							style={{ padding: "5px 60px" }}
 							onClick={back}

@@ -94,7 +94,7 @@ export function RegisterForm({ submit, edit, operador }: Props) {
 					<Col md={12}>
 						<Button
 							type="submit"
-							variant="primary"
+							variant="success"
 							className=""
 							style={{ padding: "5px 60px" }}
 						>
