@@ -10,7 +10,7 @@ import {
 	InputGroup,
 } from "react-bootstrap";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { GrupoTextField } from "../../components/hook-form";
+import { GrupoTextField, TextField } from "../../components/hook-form";
 import { Icon } from "@iconify/react";
 import Pageheader from "../../components/pageheader/pageheader";
 import { TipoPocoSelect } from "../register-poco/tipoPoco.component";
@@ -32,9 +32,17 @@ type Props = {
 	submit: (data: FormValues) => void;
 	edit?: boolean;
 	isLoading: boolean;
+	pocoId: number;
+	back: () => void;
 };
 
-export function FormFichaSismica({ submit, edit, isLoading }: Props) {
+export function FormFichaSismica({
+	submit,
+	edit,
+	isLoading,
+	pocoId,
+	back,
+}: Props) {
 	const message = edit ? "Atualizar" : "Salvar";
 	const {
 		handleSubmit,
@@ -91,19 +99,7 @@ export function FormFichaSismica({ submit, edit, isLoading }: Props) {
 							/>
 						</InputGroup>
 					</Col>
-					<Col md={6} className="mb-5">
-						<InputGroup className="mb-3">
-							<InputGroup.Text className="" id="basic-addon1">
-								<Icon icon="ph:wall-fill" />
-							</InputGroup.Text>
-							<TipoPocoSelect
-								control={control}
-								error={errors.pocoId?.message || ""}
-								label="Poço"
-								name="pocoId"
-							/>
-						</InputGroup>
-					</Col>
+
 					<Col md={6} className="mb-5">
 						<InputGroup className="mb-3">
 							<InputGroup.Text className="" id="basic-addon1">
@@ -117,11 +113,18 @@ export function FormFichaSismica({ submit, edit, isLoading }: Props) {
 							/>
 						</InputGroup>
 					</Col>
-
+					<TextField
+						control={control}
+						style={{ visibility: "hidden" }}
+						error={errors.pocoId?.message || ""}
+						label=""
+						name="pocoId"
+						defaultValue={pocoId}
+					/>
 					<Col md={12}>
 						<Button
 							type="submit"
-							variant="primary"
+							variant="success"
 							className="me-3"
 							style={{ padding: "5px 60px" }}
 						>
@@ -132,9 +135,10 @@ export function FormFichaSismica({ submit, edit, isLoading }: Props) {
 							)}
 						</Button>
 						<Button
-							variant="secondary"
+							variant="dark"
 							className=""
 							style={{ padding: "5px 60px" }}
+							onClick={back}
 						>
 							Cancelar
 						</Button>
