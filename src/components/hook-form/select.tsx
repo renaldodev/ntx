@@ -3,27 +3,27 @@ import { Form } from "react-bootstrap";
 import { RHError } from "./error";
 
 type Props = {
-	label?: string;
-	name: string;
-	error: string;
-	control: Control<any, any, any>;
-	children: any;
+  label?: string;
+  name: string;
+  error: string;
+  control: Control<any, any, any>;
+  children: any;
 };
-export function SelectField({ name, label, control, error, children }: Props) {
-	return (
-		<Controller
-			control={control}
-			name={name}
-			render={({ field }) => (
-				<>
-					<Form.Label style={{ position: "absolute", top: "-23px" }}>
-						{label}
-					</Form.Label>
-					<Form.Select {...field} children={children} />
+export function SelectField({ name, label, control, error, ...rest }: Props) {
+  return (
+    <Controller
+      control={control}
+      name={name}
+      render={({ field }) => (
+        <>
+          <Form.Label style={{ position: "absolute", top: "-23px" }}>
+            {label}
+          </Form.Label>
+          <Form.Select {...field} {...rest} />
 
-					{error && <RHError error={error} />}
-				</>
-			)}
-		/>
-	);
+          {error && <RHError error={error} />}
+        </>
+      )}
+    />
+  );
 }

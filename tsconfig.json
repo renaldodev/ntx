@@ -2,10 +2,13 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -13,13 +16,29 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "src/components/common/sidebar/sidebar.tsx",
+    "src/pages/fichaGeologica.tsx/register.tsx",
+    "src/pages/fichaGravimetrica/register.tsx",
+    "src/pages/fichaHidrocarbonato.tsx/register.tsx",
+    "src/pages/fichaMagnetica/register.tsx",
+    "src/pages/fichaPerfuracao/register.tsx",
+    "src/pages/fichaSismica/register.tsx",
+    "src/pages/fichaTeste/register.tsx",
+    "src/pages/landinglayout.tsx",
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

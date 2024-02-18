@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import axios, { AxiosError } from "axios";
 import { QueryClient } from "@tanstack/react-query";
 import { initQueryClient } from "@ts-rest/react-query";

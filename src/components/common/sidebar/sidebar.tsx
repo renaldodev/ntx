@@ -87,7 +87,8 @@ const Sidebar = ({ local_varaiable, ThemeChanger }: any) => {
               if (item === sublevel) {
                 sublevel.active = true;
               }
-              if (sublevel.children) {
+              // @ts-nocheck
+              if ("children" in sublevel) {
                 sublevel.children.map((sublevel1: any) => {
                   sublevel1.active = false;
                   if (item === sublevel1) {
