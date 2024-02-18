@@ -19,7 +19,7 @@ export const MessageModal = ({
       <Modal.Body>{message}</Modal.Body>
       <Modal.Footer>
         <Button variant="success" onClick={close}>
-          Fexar
+          Fechar
         </Button>
       </Modal.Footer>
     </Modal>

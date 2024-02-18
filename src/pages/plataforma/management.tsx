@@ -6,6 +6,7 @@ import { queryClient, service } from "../../service";
 import { useTranslation } from "../../hooks";
 import { enqueueSnackbar } from "notistack";
 import { Column, CustomTable } from "../../components/common/table";
+import { MessageModal } from "../../components/common/message-modal";
 import { PlataformaForm } from "./poco-form";
 import { Icon } from "@iconify/react";
 const img =
@@ -125,7 +126,7 @@ export function PlataformaManagement() {
           {mostrarPoco === false ? (
             <Card className={"m-5 p-3"}>
               <Button
-                variant="secondary"
+                variant="dark"
                 className="m-4"
                 style={{ padding: "5px 60px" }}
                 onClick={() => setVisibility(1)}
@@ -246,20 +247,42 @@ function PocoRegister({
   plataformaId: number;
   back?: () => void;
 }) {
-  const { mutate } = service.plataforma.create.useMutation({
-    onSuccess() {
-      queryClient.invalidateQueries({ queryKey: ["plataforma", "list"] });
+  const [modalActive, setModalActive] = useState({
+    show: false,
+    title: "",
+    message: "",
+  });
 
-      enqueueSnackbar("Plataforma adicionado com sucesso");
+  const { mutate } = service.poco.create.useMutation({
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: ["poco", "list"] });
+      // enqueueSnackbar("Poço adicionado com sucesso");
+      setModalActive({
+        show: true,
+        message: "Poço adicionado com sucesso!",
+        title: "Sucesso",
+      });
     },
     onError() {
-      enqueueSnackbar(`Algo deu errado`, {
-        variant: "error",
+      // enqueueSnackbar(`Algo deu errado`, {
+      //   variant: "error",
+      // });
+      setModalActive({
+        show: true,
+        message: "Algo deu errado!",
+        title: "Erro",
       });
     },
   });
   return (
     <Fragment>
+      <MessageModal
+        close={() => {
+          setModalActive((value) => ({ ...value, show: false }));
+          back && back();
+        }}
+        {...modalActive}
+      />
       <Card className={"m-5 p-3"}>
         <h3>Adicionar poço</h3>
         <PlataformaForm
