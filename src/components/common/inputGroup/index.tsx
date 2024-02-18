@@ -19,8 +19,8 @@ const InputGroupWithLabel: React.FC<InputGroupWithLabelProps> = ({
 	icon,
 }) => {
 	return (
-		<Col md={6} className="mb-3">
-			<InputGroup className="mb-3">
+		<Col md={6} className="mb-3  ">
+			<InputGroup className="mb-3 d-flex " id="Input">
 				<InputGroup.Text id="basic-addon1" style={{ maxWidth: "30%" }}>
 					<Icon fontSize={16} icon={icon} />
 				</InputGroup.Text>
