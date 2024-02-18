@@ -11,6 +11,7 @@ import { FichaGravimetricaListagem } from "./ficha-gravimetrica";
 import { FichaHidrocarbonatoListagem } from "./ficha-hidrocarbonato";
 import { FichaMagneticaListagem} from "./ficha-magnetica";
 
+
 const img =
   "https://hips.hearstapps.com/hmg-prod/images/robert-pattinson-as-bruce-wayne-batman-in-the-batman-1645187114.jpg";
 
@@ -88,6 +89,7 @@ export function PocoManagement() {
           <FichaGravimetricaListagem pocoId={pocoId} />
           <FichaHidrocarbonatoListagem pocoId={pocoId} />
           <FichaMagneticaListagem pocoId={pocoId} />
+          
           <Card className={"m-5 p-3"}>
             <Button variant="dark" onClick={() => setVisibility(1)}>
               Voltar

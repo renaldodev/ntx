@@ -2,6 +2,7 @@ import { Card, Button, Table } from "react-bootstrap";
 import { Column, CustomTable } from "../../components/common/table";
 import { MessageModal } from "../../components/common/message-modal";
 import { service,queryClient } from "../../service";
+
 import { ReactNode, useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { FormFichaGeologica } from "../../section/register-ficha-geologica";
@@ -209,6 +210,7 @@ export function FichaGeologicaRegister({
   const { mutate } = service.fichaGeologica.create.useMutation({
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: ["ficha", "geologia","list"] });
+
       setModalActive({
         show: true,
         message: "Ficha Geologica adicionada com sucesso!",
