@@ -105,7 +105,7 @@ export function BlocoForm({
 							style={{ padding: "5px 60px" }}
 							onClick={back}
 						>
-							Canselar
+							Cancelar
 						</Button>
 					)}
 				</Col>
